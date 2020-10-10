@@ -39,6 +39,8 @@ const onSuccessResponse = response =>
 const onErrorResponse = error => console.error("Aqui esta el error", error);
 getPhotos(URL);
 
+
+
 //toggle
 const toggle = document.querySelector(".toggle");
 const menu = document.querySelector(".menu");
@@ -63,7 +65,7 @@ Lastly, we add the event listener that will be listening to the click event usin
 
 //Dropdown Functionality 
 /*Now, when the user clicks the toggle button, the menu is activated and deactivated, however, the submenu is still hidden. We will add this functionality*/
- 
+
 /* Activate Submenu */
 function toggleItem() {
   if (this.classList.contains("submenu-active")) {
@@ -79,20 +81,10 @@ function toggleItem() {
 In the custom toggleItem() function, we add and remove .submenu-active to/from the clicked element. Note that in the else if block, we remove the class from every other menu items that were previously opened. This way, it won’t happen that two submenus are open at the same time, as they can cover each other on desktop.
 Finally, we loop through the items classList using a for...of loop. Within the if block, we add two event listeners to menu items that have a submenu: one for the click event for regular users who access the menu by clicking or tapping, and one for the keypress event for keyboard users.*/ 
 
-
-
-/* Event Listeners */
-for (let item of items) {
-    if (item.querySelector(".submenu")) {
-      item.addEventListener("click", toggleItem, false);
-      item.addEventListener("keypress", toggleItem, false);
-    }   
-}
-
 /* Close Submenu From Anywhere */
 function closeSubmenu(e) {
   let isClickInside = menu.contains(e.target);
- 
+
   if (!isClickInside && menu.querySelector(".submenu-active")) {
     menu.querySelector(".submenu-active").classList.remove("submenu-active");
   }
